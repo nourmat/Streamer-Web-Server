@@ -1,0 +1,39 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h3 id="fuck"></h3>
+        <img id="image">
+    </div>
+
+    <script type="text/javascript">
+        // function refreshImage(imgElement, imgURL) {
+        //     // create a new timestamp
+        //     var timestamp = new Date().getTime();
+        //     var el = document.getElementById(imgElement);
+        //     el.src = imgURL + "#t=" + timestamp;
+        // }
+        // setInterval(function() {
+        //     refreshImage("image", "./stream?IP=192.168.43.1&Camera_Id=1");
+        // }, 35);
+
+        if (typeof(EventSource) !== "undefined") {
+            // Yes! Server-sent events support!
+            var source = new EventSource("./stream?IP=192.168.43.1&Camera_Id=1");
+            source.onmessage = (event) => {
+                document.getElementById('image').setAttribute('src', 'data:image/png;base64,' + event.data);
+            };
+        } else {
+            // Sorry! No server-sent events support..
+            document.getElementById("fuck").innerHTML = "Oh nooo...";
+        }
+    </script>
+</body>
+
+</html>
