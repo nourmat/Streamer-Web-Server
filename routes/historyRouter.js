@@ -1,9 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const AWS = require('../AWS');
+const AWS = require('../AWS/AWS');
 
-const { application, json } = require('express');
+const {
+    application,
+    json
+} = require('express');
 const historyRouter = express.Router();
 
 historyRouter.use(bodyParser.json());
