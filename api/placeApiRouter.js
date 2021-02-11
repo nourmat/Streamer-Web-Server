@@ -22,7 +22,7 @@ placeApiRouter.route('/')
                 .then((recordset) => {
                     res.statusCode = 200;
                     res.setHeader('Content-Type', application / json);
-                    res.json(recordset[0]);
+                    res.json(recordset);
                 }).catch((err) => {
                     console.log(err);
                 });
