@@ -1598,7 +1598,7 @@ input[type="radio"] .styled:checked+label::after {
      text-shadow:0px 6px 10px rgba(0,0,255,1);
      padding: 9px 0px;
      font-size: large;
-     margin-bottom: 50px;
+     margin-bottom: 0px;
 }
 .banner-main .carousel-caption li {
      color: #000000;
@@ -1971,7 +1971,7 @@ textarea {
      font-size: 38px;
      display: block;
      color: #fff;
-     max-width: 160px;
+     max-width: 250px;
      padding-bottom: 1px;
      border-bottom: #fff solid 1px;
      text-align: center;
