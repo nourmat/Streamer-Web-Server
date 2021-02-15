@@ -4,10 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var streamRouter = require('./routes/streamRouter');
-//var historyRouter = require('./routes/historyRouter');
-var apiRouter = require('./api/apiRouter');
+var indexRouter = require('./routes/homepageRouter');
+// var streamRouter = require('./routes/streamRouter');
+// var historyRouter = require('./routes/historyRouter');
+// var apiRouter = require('./api/apiRouter');
 
 var app = express();
 
@@ -22,20 +22,21 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 
+app.use('/', indexRouter);
+// app.use('/stream', streamRouter);
+// app.use('/history', historyRouter);
+// app.use('/api', apiRouter);
+
+//TODO edit index.html to be default page and move this up in all files
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/stream', streamRouter);
-//app.use('/history', historyRouter);
-app.use('/api', apiRouter);
-
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
     next(createError(404));
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use(function(err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};

@@ -1,5 +1,5 @@
 var SQL = require("mssql");
-var constants = require("../consts");
+var config = require("./config");
 
 const TABLE_NAME = "Users";
 
@@ -11,7 +11,7 @@ const db_PASSWORD = "Password";
 
 async function db_user_user_exsist(username, password) {
 
-    return await SQL.connect(constants.db_config)
+    return await SQL.connect(config.db_config)
         .then(() => {
             var request = new SQL.Request();
 
@@ -28,7 +28,7 @@ async function db_user_user_exsist(username, password) {
 }
 
 async function db_user_add_user(username, email, password) {
-    return await SQL.connect(constants.db_config)
+    return await SQL.connect(config.db_config)
         .then(() => {
             var request = new SQL.Request();
 
@@ -42,7 +42,7 @@ async function db_user_add_user(username, email, password) {
 }
 
 async function db_user_get_user_using_id(user_id) {
-    return await SQL.connect(constants.db_config)
+    return await SQL.connect(config.db_config)
         .then(() => {
             var request = new SQL.Request();
 
@@ -56,7 +56,7 @@ async function db_user_get_user_using_id(user_id) {
 }
 
 async function db_user_get_user_using_username(username) {
-    return await SQL.connect(constants.db_config)
+    return await SQL.connect(config.db_config)
         .then(() => {
             var request = new SQL.Request();
 
@@ -70,7 +70,7 @@ async function db_user_get_user_using_username(username) {
 }
 
 async function db_user_delete_user_using_id(user_id) {
-    return await SQL.connect(constants.db_config)
+    return await SQL.connect(config.db_config)
         .then(() => {
             var request = new SQL.Request();
 
@@ -84,7 +84,7 @@ async function db_user_delete_user_using_id(user_id) {
 }
 
 async function db_user_delete_user_using_username(username) {
-    return await SQL.connect(constants.db_config)
+    return await SQL.connect(config.db_config)
         .then(() => {
             var request = new SQL.Request();
 
@@ -98,7 +98,7 @@ async function db_user_delete_user_using_username(username) {
 }
 
 async function db_user_clear_users_db() {
-    return await SQL.connect(constants.db_config)
+    return await SQL.connect(config.db_config)
         .then(() => {
             var request = new SQL.Request();
 

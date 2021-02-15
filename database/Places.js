@@ -1,5 +1,5 @@
 var SQL = require("mssql");
-var constants = require("../consts");
+var config = require("./config");
 
 const TABLE_NAME = "Places";
 
@@ -10,7 +10,7 @@ const db_NAME = "Name";
 const db_IP = "IP";
 
 async function db_place_add_place(user_id, name, ip) {
-    return await SQL.connect(constants.db_config)
+    return await SQL.connect(config.db_config)
         .then(() => {
             var request = new SQL.Request();
 
@@ -25,7 +25,7 @@ async function db_place_add_place(user_id, name, ip) {
 
 async function db_place_get_all_places_for_user_id(user_id) {
 
-    return await SQL.connect(constants.db_config)
+    return await SQL.connect(config.db_config)
         .then(() => {
             var request = new SQL.Request();
 
@@ -39,7 +39,7 @@ async function db_place_get_all_places_for_user_id(user_id) {
 }
 
 async function db_place_delete_place_using_id(place_id) {
-    return await SQL.connect(constants.db_config)
+    return await SQL.connect(config.db_config)
         .then(() => {
             var request = new SQL.Request();
 
@@ -53,7 +53,7 @@ async function db_place_delete_place_using_id(place_id) {
 }
 
 async function db_place_delete_place_using_ip(ip) {
-    return await SQL.connect(constants.db_config)
+    return await SQL.connect(config.db_config)
         .then(() => {
             var request = new SQL.Request();
 
@@ -67,7 +67,7 @@ async function db_place_delete_place_using_ip(ip) {
 }
 
 async function db_place_clear_places_db() {
-    return await SQL.connect(constants.db_config)
+    return await SQL.connect(config.db_config)
         .then(() => {
             var request = new SQL.Request();
 

@@ -1,5 +1,5 @@
 var SQL = require("mssql");
-var constants = require("../consts");
+var config = require("./config");
 
 const TABLE_NAME = "Cameras";
 
@@ -10,7 +10,7 @@ const db_NAME = "Name";
 const db_PORT = "PORT";
 
 async function db_camera_add_camera(place_id, name, port) {
-    return await SQL.connect(constants.db_config)
+    return await SQL.connect(config.db_config)
         .then(() => {
             var request = new SQL.Request();
 
@@ -25,7 +25,7 @@ async function db_camera_add_camera(place_id, name, port) {
 
 async function db_camera_get_all_cameras_for_place_id(place_ID) {
 
-    return await SQL.connect(constants.db_config)
+    return await SQL.connect(config.db_config)
         .then(() => {
             var request = new SQL.Request();
 
@@ -39,7 +39,7 @@ async function db_camera_get_all_cameras_for_place_id(place_ID) {
 }
 
 async function db_camera_delete_camera_using_id(camera_id) {
-    return await SQL.connect(constants.db_config)
+    return await SQL.connect(config.db_config)
         .then(() => {
             var request = new SQL.Request();
 
@@ -53,7 +53,7 @@ async function db_camera_delete_camera_using_id(camera_id) {
 }
 
 async function db_camera_clear_cameras_db() {
-    return await SQL.connect(constants.db_config)
+    return await SQL.connect(config.db_config)
         .then(() => {
             var request = new SQL.Request();
 
