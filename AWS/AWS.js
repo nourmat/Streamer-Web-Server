@@ -1,6 +1,4 @@
-const fs = require('fs')
 const AWS = require("aws-sdk");
-const uuid = require("uuid");
 
 //Add bucket name and configure region
 const BUCKET_NAME = 'streamer-s3-storage';

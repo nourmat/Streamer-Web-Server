@@ -4,10 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/homepageRouter');
-// var streamRouter = require('./routes/streamRouter');
-// var historyRouter = require('./routes/historyRouter');
-// var apiRouter = require('./api/apiRouter');
+var indexRouter = require('./routes/indexRouter');
+var streamRouter = require('./routes/streamRouter');
+var historyRouter = require('./routes/historyRouter');
+var apiRouter = require('./api/apiRouter');
 
 var app = express();
 
@@ -23,9 +23,9 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 
 app.use('/', indexRouter);
-// app.use('/stream', streamRouter);
-// app.use('/history', historyRouter);
-// app.use('/api', apiRouter);
+app.use('/stream', streamRouter);
+app.use('/history', historyRouter);
+app.use('/api', apiRouter);
 
 //TODO edit index.html to be default page and move this up in all files
 app.use(express.static(path.join(__dirname, 'public')));
