@@ -1,9 +1,10 @@
 const AWS = require("aws-sdk");
+const dotenv = require("dotenv").config();
 
 //Add bucket name and configure region
-const BUCKET_NAME = 'streamer-s3-storage';
-AWS.config.update({ region: 'eu-west-3' });
-AWS.config.apiVersion = { s3: '2006-03-01' };
+const BUCKET_NAME = process.env.AWS_BUCKET_NAME;
+AWS.config.update({ region: process.env.AWS_REGION });
+AWS.config.apiVersion = { s3: process.env.AWS_APIVERSION };
 
 //Used to check if credential file is loaded
 AWS.config.getCredentials((err) => {
