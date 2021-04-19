@@ -16,12 +16,22 @@ exports.loadHistory = (req, res, next) => {
     db_users.db_user_check_user_id_place_id_camera_id(user_id, place_id, camera_id)
         .then((recordset) => {
             if (recordset) {
-                req.flash('cameraName', recordset.Name[1]);
-
                 AWS.ListObjectsWithPrefix (recordset.IP + '-' + recordset.Camera_ID, (data) => {
-                    console.log (data.Contents);
-                    next();
+                    res.statusCode = 200;
+                    res.render(__dirname + './../public/userPlace/history', {
+                        cameraName: recordset.Name[1],
+                        AWSDATA: data.Contents
+                    });
                 })
             }
         })
 } 
+
+exports.downloadFile = (req, res) => {
+    var filename = req.query.filename;
+        
+    AWS.getObjectAndDownload(filename, (url) => {
+        res.statusCode = 302; //Temporary redirect
+        res.redirect(url);
+    });
+}

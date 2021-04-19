@@ -18,7 +18,10 @@ async function db_user_check_user_id_place_id_camera_id (user_id, place_id, came
                                 ${db_places.TABLE_NAME}.${db_places.db_NAME}, ${db_cameras.TABLE_NAME}.${db_cameras.db_NAME}, ${db_places.TABLE_NAME}.${db_places.db_IP}
                                 FROM ${TABLE_NAME}
                                 INNER JOIN ${db_places.TABLE_NAME} ON ${TABLE_NAME}.${db_USER_ID}=${db_places.TABLE_NAME}.${db_places.db_USER_ID}
-                                INNER JOIN ${db_cameras.TABLE_NAME} ON ${db_places.TABLE_NAME}.${db_places.db_PLACE_ID}=${db_cameras.TABLE_NAME}.${db_cameras.db_PLACE_ID}`)
+                                INNER JOIN ${db_cameras.TABLE_NAME} ON ${db_places.TABLE_NAME}.${db_places.db_PLACE_ID}=${db_cameras.TABLE_NAME}.${db_cameras.db_PLACE_ID}
+                                WHERE ${TABLE_NAME}.${db_USER_ID}=${user_id} 
+                                AND ${db_places.TABLE_NAME}.${db_places.db_PLACE_ID}=${place_id}
+                                AND ${db_cameras.TABLE_NAME}.${db_cameras.db_CAMERA_ID}=${camera_id}`)
         .then((recordset) => {
             if (recordset.recordset.length > 0)
                 return recordset.recordset[0];
