@@ -1,11 +1,5 @@
 const db_users = require('../database/tables/Users');
 const AWS = require('./../AWS/AWS');
-// const db_places = require('../database/tables/Places');
-// const db_cameras = require('../database/tables/Cameras');
-const {
-    application,
-    json
-} = require('express');
 
 exports.loadHistory = (req, res, next) => {
     const user_id = req.user.id; /* saved inside token */ 
@@ -23,6 +17,9 @@ exports.loadHistory = (req, res, next) => {
                         AWSDATA: data.Contents
                     });
                 })
+            } else {
+                res.statusCode = 401; /* forbiden */
+                res.redirect ("/api/auth/logout");
             }
         })
 } 

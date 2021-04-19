@@ -71,21 +71,22 @@ function authenticateToken(req, res, next, redirect_if_failed) {
         if (!token) {
             if (redirect_if_failed)
                 error_message_redirect_to_login (req, res, 'You need to Login');
-            else 
+            else {
                 req.user = {id: null};
+                next();
+            }
         } else {
             const decrypt = jwt.verify(token, process.env.JWT_SECRET);
             req.user = {id: decrypt.id};
+            next();
         }
-
-        next();
     } catch (err) { /* failed in verification in jwt.verify */
         if (redirect_if_failed)
             error_message_redirect_to_login (req, res, 'You need to Login');
-        else
+        else {
             req.user = {id: null};
-
-        next();
+            next();
+        }
     }
 }
 

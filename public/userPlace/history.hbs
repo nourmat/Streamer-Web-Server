@@ -15,9 +15,8 @@
 
     <ul>
         {{#each AWSDATA}}
-            <li><a href="./history/download?filename={{Key}}">Download {{Key}}</a></li>
+            <li><a href="./history/download?filename={{{Key}}}">Download {{{getDate Key}}}</a></li>
         {{/each}}
     </ul>
 </body>
-
 </html>

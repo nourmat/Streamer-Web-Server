@@ -1,10 +1,10 @@
 const express = require("express");
 const path = require('path');
-// const logger = require('morgan');
+const logger = require('morgan');
 const flash = require('connect-flash'); /* requires cookireParser and session */
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-// const createError = require('http-errors');
+const hbs = require('./utils/handelbars');
 
 const pagesRouter = require('./routes/pagesRouter');
 const app = express();
