@@ -14,6 +14,7 @@ exports.loadHistory = (req, res, next) => {
                     res.statusCode = 200;
                     res.render(__dirname + './../public/userPlace/history', {
                         cameraName: recordset.Name[1],
+                        placeName: recordset.Name[0],
                         AWSDATA: data.Contents
                     });
                 })

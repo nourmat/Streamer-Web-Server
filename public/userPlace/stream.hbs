@@ -1,0 +1,42 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {background-color: #232426;}
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body onload="startpage('{{cameraData.Place_ID}}', '{{cameraData.Camera_ID}}', '{{cameraData.IP}}');">
+    <div>
+        {{#if cameraName}}
+            <h1 class="center" style="color: white;">Live Stream of {{cameraName}} camera in {{placeName}}</h1>
+        {{else}}
+            <h1>Opps something went wrong! :(</h1>
+        {{/if}}
+
+        <img id="image" class="center">
+    </div>
+
+    <script type="text/javascript">
+            // To fix passing ip (dots) issue I had to pass {{cameraData.IP}} through a function.
+            function startpage (place_id, camera_id, ip) {
+                var sock = new WebSocket("ws://localhost:3000/stream?place_id=" + place_id + "&camera_id=" + camera_id + "&ip=" + ip);
+            
+                sock.onmessage = (event) => {
+                    // Reciving image as a base64 string from the server
+                    document.getElementById('image').setAttribute('src', 'data:image/png;base64,' + event.data);
+                }
+            }
+    </script>
+</body>
+
+</html>

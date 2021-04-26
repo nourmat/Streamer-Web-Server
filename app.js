@@ -1,13 +1,17 @@
 const express = require("express");
 const path = require('path');
-const logger = require('morgan');
+// const logger = require('morgan');
 const flash = require('connect-flash'); /* requires cookireParser and session */
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const expressWebSocket = require('express-ws');
+const http = require('http');
 const hbs = require('./utils/handelbars');
 
-const pagesRouter = require('./routes/pagesRouter');
 const app = express();
+const httpServer = http.Server(app);
+const expressWebSocketServer = expressWebSocket(app, httpServer);
+const pagesRouter = require('./routes/pagesRouter');
 
 /* view engine setup */
 app.set('views', path.join(__dirname, 'public'));
@@ -41,4 +45,10 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
-module.exports = app;
+module.exports = {
+    app: app,
+    server: httpServer
+};
+
+// Changes made to work with express-ws
+// https://stackoverflow.com/questions/40362258/package-express-ws-doesnt-let-clients-connect
