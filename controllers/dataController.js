@@ -1,3 +1,5 @@
+// Used for retriving cameras and places
+
 const db_places = require('../database/tables/Places');
 const db_cameras = require('../database/tables/Cameras');
 const {

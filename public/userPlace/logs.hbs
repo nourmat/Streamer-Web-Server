@@ -1,0 +1,25 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>logs</title>
+</head>
+
+<body>
+    {{#if cameraName}}
+        <h1>Logs of {{cameraName}} in {{placeName}}</h1>
+    {{else}}
+        <h1>Opps something went wrong! :(</h1>
+    {{/if}}
+
+    <ul>
+        {{#each LOGSDATA}}
+            <h4>Action was in {{{getDateFromTimeStamp timestamp}}}</h4>
+            <h4>Action type {{{action}}}</h4>
+            <a href="./logs/download?image_path={{{image_path}}}">See image here</a>
+            <hr>
+        {{/each}}
+    </ul>
+</body>
+</html>
