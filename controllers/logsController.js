@@ -4,8 +4,8 @@ const {
     application,
     json
 } = require('express');
-const logFileLocation = __dirname + '/'
-const imageFileLocation = __dirname + '/'
+const logFileLocation = '/home/nourmat/Projects/surveillance-ml/'
+const imageFolderLocation = '/home/nourmat/Projects/surveillance-ml/log_img/'
 
 
 exports.getLogs = (req, res) => {
@@ -44,7 +44,7 @@ exports.getImageFromPath = (req, res) => {
   const user_id = req.user.id; /* saved inside token */ 
   const {image_path} = req.query; /* GET */
 
-  fs.readFile(imageFileLocation + image_path, 'utf8' , (err, data) => {
+  fs.readFile(imageFolderLocation + image_path, 'utf8' , (err, data) => {
       if (err) {
         console.error(err)
         res.statusCode = 404;
@@ -52,7 +52,7 @@ exports.getImageFromPath = (req, res) => {
         return
       }
       
-      res.sendFile(imageFileLocation + image_path)
+      res.sendFile(imageFolderLocation + image_path)
     })
 }
 
