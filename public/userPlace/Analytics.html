@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Table V01</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="../resources/Analytics/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/Analytics/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/Analytics/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/Analytics/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/Analytics/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/Analytics/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../resources/Analytics/css/util.css">
+	<link rel="stylesheet" type="text/css" href="../resources/Analytics/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-table100"  style="background-image: url('../resources/Analytics/images/bg-01.jpg'); height: 100%; background-repeat: no-repeat;
+		background-size: cover;">
+			<div class="wrap-table100">
+				<div class="table100">
+					<label>
+						Choose date:
+						<select name= "place_id" id="places" onChange="changecat(this.value);" required>
+						   <option value="1">10/7/2021</option>
+						   <option value="2">08/7/2021</option>
+						   <option value="3">09/7/2021</option>
+						   <option value="4">11/7/2021</option>
+						</select>
+					</label>
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column1">Event Type</th>
+								<th class="column2">Number of Repetition</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+								<tr>
+									<td class="column1">Guns Detected</td>
+									<td class="column2">20</td>
+									
+								</tr>
+								<tr>
+									<td class="column1">Unauthorized personnel Detected</td>
+									<td class="column2">7</td>
+									
+								</tr>
+								<tr>
+									<td class="column1">Blacklisted people detected</td>
+									<td class="column2">3</td>
+									
+								</tr>
+								<tr>
+									<td class="column1">License plated detected</td>
+									<td class="column2">200</td>
+									
+								</tr>
+								<tr>
+									<td class="column1">Faces Detected</td>
+									<td class="column2">1000</td>
+									
+								</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	
+
+<!--===============================================================================================-->	
+	<script src="../resources/Analytics/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../resources/Analytics/vendor/bootstrap/js/popper.js"></script>
+	<script src="../resources/Analytics/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../resources/Analytics/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../resources/Analytics/js/main.js"></script>
+
+</body>
+</html>
