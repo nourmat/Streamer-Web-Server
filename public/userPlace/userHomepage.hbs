@@ -126,13 +126,14 @@
                                    </label>
                                    <label style="visibility: hidden;" id="cams">
                                     Camera:
-                                    <select name= "camera_id" id="cameras" required>
-                                    </select>
+                                    <select name= "camera_id" id="cameras" required></select>
                                     </label>
                                  </div>
                                  <button class="btn btn-lg btn-primary" id="livestream" href="#" type="submit" role="button">LiveStream</button>
                                  <button class="btn btn-lg btn-primary" id="history" href="#" type="submit" role="button">History</button>
-                                 <button style="margin-left: 100px; margin-top: 25px" class="btn btn-lg btn-primary" id="analytics" href="Analytics.html" role="button">Cam Analytics</button>
+                                 <button style="margin-top: 25px" class="btn btn-lg btn-primary" id="analytics" type="submit" href="Analytics.html" role="button">Cam Analytics</button>
+                                 <button style="margin-top: 25px" class="btn btn-lg btn-primary" id="logs" href="#" type="submit" role="button">Show Logs</button>
+
                               </form>
                               <a style="margin-left: 125px;" class="btn btn-lg btn-primary" id="edit" href="Edit info.html" role="button">Edit Profile</a>
                            </div>
@@ -197,6 +198,9 @@
             };
             document.getElementById("history").onclick = function() {
                document.getElementById("myForm").action = "/history";
+            };
+            document.getElementById("logs").onclick = function() {
+               document.getElementById("myForm").action = "/logs";
             };
             
          function appendData(elementID, data)
